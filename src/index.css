@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.video-link {
+  font-size:larger;
+}
+.grid-container {
+  display:grid !important;
+  grid-template-areas:
+  'tracker tracker tracker'
+  'menu main ins'
+  'menu footer footer';
+  padding:10px;
+  row-gap:20px;
+  column-gap:20px;
+  width:1000px;
+}
+.tracker {
+  grid-area: tracker;
+  margin-left: 200px;
+}
+.ins {
+  grid-area:ins;
+  width:350px;
+}
+.annotations {
+  grid-area: footer;
+}
+.control-btn-group {
+  grid-area: menu !important;
+  width:100px;
+
+  }
+.control-btn-group button {
+  display:block;
+}
+.control-box {
+  grid-area:main;
+  width:400px;
+}
+.square-btn {
+  position: relative;
+  margin-right: 0.5em;
+  border:none;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #00bcd4;
+  transition: .4s;
+}
+
+.example_c {
+  color: #494949 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #ffffff;
+  padding: 10px;
+  border: 2px solid #494949 !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+  margin-left:10px;
+  margin-top:10px;
+  width:120px;
+  }
+
+  .example_d {
+    color:#494949 !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #01db43;
+    padding: 10px;
+    border: 2px solid #494949 !important;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+    margin-left:10px;
+    margin-top:10px;
+    width:120px
+    }
+
+    .example_c:hover {
+      background: #556bce;
+      color: white !important;
+    }
+
+.square-btn:hover {
+  background: #c24b1c;
+}
+
+.square-btn-selected {
+  position: relative;
+  margin-right: 0.5em;
+  border:none;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  
+  transition: .4s;
+  background: #c24b1c;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
