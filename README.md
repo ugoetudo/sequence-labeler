@@ -14,6 +14,10 @@ If you make changes to files, organize your changes into logical commits
 
 `git commit -m "brief description of changes"`
 
+Then push your commit
+
+`git push`
+
 If you create new files, you want to add them to the branch before committing
 
 `git add my_new_file.js`
