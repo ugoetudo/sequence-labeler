@@ -1,4 +1,17 @@
-<<<<<<< HEAD
+# Contributing Guidelines
+
+After cloning `git clone`
+
+You want to create a new branch
+
+`git checkout -b my-branch-name`
+
+You want that branch to track the origin branch 
+
+`git push -u origin my-branch-name`
+
+If you make changes to files 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -69,6 +82,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
 # sequence-labeler
->>>>>>> 198c0cfd7852911b3efc8c98abc1aa2a067fe2c5
