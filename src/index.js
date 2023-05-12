@@ -115,6 +115,10 @@ class Controls extends React.Component {
       return btn;
     };
   }
+
+  componentDidMount() {
+    
+  }
   render () {
     return (
       <div className="control-btn-group">
@@ -303,6 +307,7 @@ class Navigation extends React.Component {
           <Controls buttonSelected={(btn) => this.beginAnnotation(btn)} 
                     active_button={this.state.active_annotation_class}
                     buttonDeselected={() => this.cancelAnnotation()}
+                    buttons={[]}
                     active_annotation_started={() => {
                       return (this.state.active_annotation_started);
                       }}/>{/*TODO this is fucked up. want to log the state variable before passing it to Control's props*/}
@@ -384,6 +389,7 @@ class HIT extends React.Component {
     const api_url = `${api_base_url}/${api_name}/getObservation?hitid=${this.url_query.get('htid')}`+
     `&turkid=${this.url_query.get('workerId')}`;
     const status_call = `${api_base_url}/${api_name}/HITLength?hitid=${this.url_query.get('htid')}`;
+    const buttons_call = `${api_base_url}/${api_name}/getButtons`;
     console.log(api_url);
     fetch(api_url).then(res => res.json())
         .then(data => {
@@ -394,7 +400,11 @@ class HIT extends React.Component {
       }).then(fetch(status_call).then(res => res.json()).then(data => {
         console.log(data)
         this.setState({hit_length: data[0].cnt})
-        }));
+        }).then(fetch(buttons_call).then(res => res.json()).then(data => {
+          console.log(data)
+          this.setState({buttons_data:data})
+        }))
+        );
   }
   
   componentDidMount() {
