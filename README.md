@@ -10,7 +10,13 @@ You want that branch to track the origin branch
 
 `git push -u origin my-branch-name`
 
-If you make changes to files 
+If you make changes to files, organize your changes into logical commits
+
+`git commit -m "brief description of changes"`
+
+If you create new files, you want to add them to the branch before committing
+
+`git add my_new_file.js`
 
 # Getting Started with Create React App
 
