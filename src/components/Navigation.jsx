@@ -98,11 +98,12 @@ class Navigation extends React.Component {
         //const grouped_df = anno_df.groupBy('spanid');
         let unique_spans = anno_df.unique('spanid').toArray();
         unique_spans.forEach(unique_span => {
-          const grp = anno_df.where(rw => rw.get('spanid') == unique_span[0]);
+          const grp = anno_df.where(rw => rw.get('spanid') === unique_span[0]);
           const sorted_group = grp.sortBy('tkid');
           let x = sorted_group.getRow(0);
           this.beginAnnotation(x.get('label_name'));
-          let [rs, cs] = sorted_group.dim();
+          // let [rs, cs] = sorted_group.dim();
+          let rs = sorted_group.dim();
           for (var i = 0; i < rs; i++)
           {
             let curr_row = sorted_group.getRow(i);

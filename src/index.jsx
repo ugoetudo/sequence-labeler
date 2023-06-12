@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DataFrame from 'dataframe-js';
+// import DataFrame from 'dataframe-js';
 import './index.css';
 //import App from './App';
 import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom'
-import {v4 as uuidv4} from 'uuid';
+// import {v4 as uuidv4} from 'uuid';
 import Navigation from './components/Navigation';
 
 const api_base_url = 'https://opim-big-data-analytics.ue.r.appspot.com';
@@ -67,7 +67,7 @@ class HIT extends React.Component {
                     `&tkids=${JSON.stringify(annotations)}&sid=${this.state.observations[0].sid}`;
     console.log(api_url);
     fetch(api_url).then(res => res.json()).then(data => {
-      if (data.status == 'OK') {
+      if (data.status === 'OK') {
         this.callAPI();
       }
     });
@@ -116,7 +116,7 @@ class HIT extends React.Component {
     } else
     {
       return (
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt= "Loading!! Please wait for a few seconds."/>
       );
     }
   }
