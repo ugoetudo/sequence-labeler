@@ -78,11 +78,13 @@ class Annotation extends React.Component {
 class Controls extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       activeButton: this.props.active_button,
       annotating:false,
     };
     this.buttonText = this.buttonText.bind(this);
+    
   }
 
   triggerButton(e, btn) {
@@ -115,26 +117,27 @@ class Controls extends React.Component {
       return btn;
     };
   }
-
+  triggerUR
   componentDidMount() {
     
   }
   render () {
+    const buttons_collection = []
+    var cntr = 0
+    this.props.buttons.forEach(l => {
+      buttons_collection.push(<button key={cntr} className={this.props.active_button === l['label_name'] ? 'example_d':'example_c'}
+        onClick={(e) => this.triggerButton(e,l['label_name'])}> {this.buttonText(l['label_name'])}
+      </button>)
+      cntr++
+    })
     return (
       <div className="control-btn-group">
         <p style={{paddingLeft:"15px"}}>1. First pick a label:</p>
-        <button className={this.props.active_button === 'religion' ? 'example_d':'example_c'} 
-          onClick={(e) => this.triggerButton(e,'religion')}> {this.buttonText('religion')} </button>
-        <button className={this.props.active_button === 'ideology' ? 'example_d':'example_c'} 
-          onClick={(e) => this.triggerButton(e,'ideology')}> {this.buttonText('ideology')} </button>
-        <button className={this.props.active_button === 'problem practice' ? 'example_d':'example_c'} 
-          onClick={(e) => this.triggerButton(e,'problem practice')}> {this.buttonText('problem practice')} </button>
-        <button className={this.props.active_button === 'victim' ? 'example_d':'example_c'} 
-          onClick={(e) => this.triggerButton(e,'victim')}> {this.buttonText('victim')} </button>
-        <button className={this.props.active_button === 'combatant group' ? 'example_d':'example_c'} 
-          onClick={(e) => this.triggerButton(e,'combatant group')}> {this.buttonText('combatant group')} </button>
-        <button className={this.props.active_button === 'other group' ? 'example_d':'example_c'} 
-          onClick={(e) => this.triggerButton(e,'other group')}> {this.buttonText('other group')} </button>
+        {
+          buttons_collection.map(function(elem, index){
+            return elem;
+          })
+        }
       </div>
     );
   }
@@ -307,7 +310,7 @@ class Navigation extends React.Component {
           <Controls buttonSelected={(btn) => this.beginAnnotation(btn)} 
                     active_button={this.state.active_annotation_class}
                     buttonDeselected={() => this.cancelAnnotation()}
-                    buttons={[]}
+                    buttons={this.props.labels}
                     active_annotation_started={() => {
                       return (this.state.active_annotation_started);
                       }}/>{/*TODO this is fucked up. want to log the state variable before passing it to Control's props*/}
@@ -341,6 +344,7 @@ class Navigation extends React.Component {
         <Controls buttonSelected={(btn) => this.beginAnnotation(btn)} 
                     active_button={this.state.active_annotation_class}
                     buttonDeselected={() => this.cancelAnnotation()}
+                    buttons={this.props.labels}
                     active_annotation_started={() => {
                       return (this.state.active_annotation_started);
                       }}/>
@@ -389,7 +393,7 @@ class HIT extends React.Component {
     const api_url = `${api_base_url}/${api_name}/getObservation?hitid=${this.url_query.get('htid')}`+
     `&turkid=${this.url_query.get('workerId')}`;
     const status_call = `${api_base_url}/${api_name}/HITLength?hitid=${this.url_query.get('htid')}`;
-    const buttons_call = `${api_base_url}/${api_name}/getButtons`;
+    const labels_call = `${api_base_url}/${api_name}/getLabels`;
     console.log(api_url);
     fetch(api_url).then(res => res.json())
         .then(data => {
@@ -400,10 +404,10 @@ class HIT extends React.Component {
       }).then(fetch(status_call).then(res => res.json()).then(data => {
         console.log(data)
         this.setState({hit_length: data[0].cnt})
-        }).then(fetch(buttons_call).then(res => res.json()).then(data => {
-          console.log(data)
-          this.setState({buttons_data:data})
-        }))
+        })).then(fetch(labels_call).then(res => res.json()).then(data => {
+          console.log(data);
+          this.setState({label_data:data});
+        })
         );
   }
   
@@ -459,7 +463,8 @@ class HIT extends React.Component {
             rank_val={this.state.observations[0].rank_value}
             onNextClick={this.getNext}
             onBackClick={this.getLast} 
-            assignmentId={this.url_query.get('assignmentId')}/>
+            assignmentId={this.url_query.get('assignmentId')}
+            labels={this.state.label_data}/>
           
         </div>
       );
