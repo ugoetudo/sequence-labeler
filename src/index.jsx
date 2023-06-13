@@ -11,7 +11,7 @@ import {
 import Navigation from './components/Navigation';
 
 const api_base_url = 'https://opim-big-data-analytics.ue.r.appspot.com';
-//const api_base_url = 'http://localhost:9000'
+// const api_base_url = 'http://localhost:9000'
 const api_name = 'entity_recog';
 
 
@@ -42,6 +42,7 @@ class HIT extends React.Component {
     const api_url = `${api_base_url}/${api_name}/getObservation?hitid=${this.url_query.get('htid')}`+
     `&turkid=${this.url_query.get('workerId')}`;
     const status_call = `${api_base_url}/${api_name}/HITLength?hitid=${this.url_query.get('htid')}`;
+    const labels_call = `${api_base_url}/${api_name}/getLabels`;
     console.log(api_url);
     fetch(api_url).then(res => res.json())
         .then(data => {
@@ -52,7 +53,11 @@ class HIT extends React.Component {
       }).then(fetch(status_call).then(res => res.json()).then(data => {
         console.log(data)
         this.setState({hit_length: data[0].cnt})
-        }));
+        })).then(fetch(labels_call).then(res => res.json()).then(data => {
+          console.log(data);
+          this.setState({label_data:data});
+        })
+        );
   }
   
   componentDidMount() {
@@ -107,7 +112,8 @@ class HIT extends React.Component {
             rank_val={this.state.observations[0].rank_value}
             onNextClick={this.getNext}
             onBackClick={this.getLast} 
-            assignmentId={this.url_query.get('assignmentId')}/>
+            assignmentId={this.url_query.get('assignmentId')}
+            labels={this.state.label_data}/>
           
         </div>
       );
@@ -116,7 +122,7 @@ class HIT extends React.Component {
     } else
     {
       return (
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt= "Loading!! Please wait for a few seconds."/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="The page is loading. It might take a few seconds"/>
       );
     }
   }
