@@ -68,3 +68,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### To Run the Project
+
+First, install MySQL 8+. Ubuntu users, please note that you need atleast Ubuntu 20 to install MySQL 8. The following link can be used as a reference: https://dev.mysql.com/doc/refman/8.0/en/installing.html
+Installing MySQL Workbench is highly recommended to visualize the data using the Instrucions can be found here: https://dev.mysql.com/doc/workbench/en/wb-installing.html
+
+Second, install node, react and npm to your system.
+
+Third, set up a user name, password and create a database on MySQL and start MYSQL. Please lookup the instructions for doing this based on your OS.
+
+Next, make necessary changes to the user name, password, database name and port no based on your MYSQL configuration on the sequence_labeler_api codebase. Then open a terminal and enter the sequence_labeler_api directory using `cd sequence_labeler_api`.
+Install all the required packages using `npm i`.
+Run the express backend code using `npm start`.
+
+Next, enter the directory of the sequence_labeler codebase using `cd sequence_labeler` and run the code using `npm start`.
+This will open a page with address 'localhost:3000' on your browser. On the browser, add '/entity_recog?htid=211' after 'localhost:3000' and give 2/3 seconds.
