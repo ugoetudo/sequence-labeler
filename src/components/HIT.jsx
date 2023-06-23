@@ -1,9 +1,5 @@
 import React from 'react';
 import '../index.css';
-import {
-  BrowserRouter as Router,
-  Route,
-} from 'react-router-dom';
 import Navigation from './Navigation';
 
 // const api_base_url = 'https://opim-big-data-analytics.ue.r.appspot.com';
