@@ -21,6 +21,8 @@ class Token extends React.Component {
     this.props.onSelected(tid, tokentext)
   }
 
+  
+
   render () {
     return(
     <button onClick={() => this.sendState()} className={this.state.isselected === false ? 'square-btn' : this.state.isclickable === true ? 'square-btn-selected': 'square-btn'}>
