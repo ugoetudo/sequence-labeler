@@ -1,5 +1,5 @@
 import React from "react";
-import Instructions from './instructions';
+import Instructions from './Instructions';
 import DataFrame from 'dataframe-js';
 import {v4 as uuidv4} from 'uuid';
 import Annotation from './Annotation';
