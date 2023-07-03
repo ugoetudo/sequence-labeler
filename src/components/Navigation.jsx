@@ -1,5 +1,5 @@
 import React from "react";
-import Instructions from './instructions';
+import Instructions from './Instructions';
 import DataFrame from 'dataframe-js';
 import {v4 as uuidv4} from 'uuid';
 import Annotation from './Annotation';
@@ -156,7 +156,7 @@ class Navigation extends React.Component {
                       }}/>{/*TODO this is fucked up. want to log the state variable before passing it to Control's props*/}
           <Annotation annotation={this.state.annotations} clear_annotation={(del_id) => this.popAnnotation(del_id)}/>
           <div className="ins">
-            <Instructions />
+            <Instructions label_definitions={this.props.labels}/>
           </div>
           <div className="control-box">
             <p>2. Then, in order, select the words that make up ONE phrase</p>

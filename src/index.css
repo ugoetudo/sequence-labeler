@@ -28,6 +28,7 @@ body {
 .ins {
   grid-area:ins;
   width:350px;
+  overflow-y: auto;
 }
 .annotations {
   grid-area: footer;
