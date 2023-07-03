@@ -14,11 +14,12 @@ body {
   grid-template-areas:
   'tracker tracker tracker'
   'menu main ins'
-  'menu footer footer';
+  'menu footer ins';
   padding:10px;
   row-gap:20px;
   column-gap:20px;
   width:1000px;
+  height:600px;
 }
 .tracker {
   grid-area: tracker;
@@ -33,7 +34,9 @@ body {
 }
 .control-btn-group {
   grid-area: menu !important;
-  width:100px;
+  width:220px;
+  height: 500px;
+  overflow-y: auto;
 
   }
 .control-btn-group button {
@@ -67,7 +70,7 @@ body {
   transition: all 0.4s ease 0s;
   margin-left:10px;
   margin-top:10px;
-  width:120px;
+  width:160px;
   }
 
   .example_d {
@@ -81,7 +84,7 @@ body {
     transition: all 0.4s ease 0s;
     margin-left:10px;
     margin-top:10px;
-    width:120px
+    width:160px
     }
 
     .example_c:hover {

@@ -10,8 +10,9 @@ import {
 // import {v4 as uuidv4} from 'uuid';
 import Navigation from './components/Navigation';
 
-const api_base_url = 'https://opim-big-data-analytics.ue.r.appspot.com';
-// const api_base_url = 'http://localhost:9000'
+// const api_base_url = 'https://opim-big-data-analytics.ue.r.appspot.com';
+//const api_base_url = 'http://localhost:9000';
+const api_base_url = 'https://wilder-breakthroughs.uk.r.appspot.com';
 const api_name = 'entity_recog';
 
 
