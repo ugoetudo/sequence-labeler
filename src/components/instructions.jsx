@@ -1,13 +1,16 @@
 import React from 'react';
 
 class Instructions extends React.Component {
-    label_name_style = {'text-transform': 'uppercase'};
-    componentDidMount()
-    {
-        label_definitions = [];
-        if (this.props.labels != null) {
-            this.props.labels.forEach( l => {
-                label_definitions.push(
+    constructor(props){
+        super(props);
+        this.label_name_style = {'text-transform': 'uppercase'};
+        this.label_definitions = [];
+    }
+
+    render() {
+        if (this.props.label_definitions != null) {
+            this.props.label_definitions.forEach( l => {
+                this.label_definitions.push(
                     <li>
                         <p>
                             <strong style={this.label_name_style}>{l['label_name']}: </strong>{l['label_notes']} 
@@ -16,14 +19,12 @@ class Instructions extends React.Component {
                 )
             })
         }
-    }
-    render() {
         return (
         <div>
             <h2>Label Definitions</h2>
             <p>Select the sequence of words that represents:</p>
             <ul>
-                {label_definitions}
+                {this.label_definitions}
             </ul>
         </div>
         );
