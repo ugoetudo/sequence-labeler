@@ -33,7 +33,7 @@ body:
   - type: dropdown
     attributes:
       label: Story Points
-      options: |
+      options:
         - 1
         - 2
         - 3
