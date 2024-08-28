@@ -1,5 +1,6 @@
 name: base_issue_template
 description: this template is used to create a PBI, or an item in the backlog
+labels: ["New Feature"]
 body:
   - type: textarea
     attributes:
