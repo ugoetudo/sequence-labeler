@@ -1,0 +1,43 @@
+name: base_issue_template
+about: this template is used to create a PBI, or an item in the backlog
+body:
+  - type: textarea
+    attributes:
+      label: What
+      placeholder: Describe what this work item is intended to accomplish
+    validations: 
+      required: true
+  
+  - type: textarea
+    attributes:
+      label: Why
+      placeholder: Describe how this work item helps us achieve the sprint goal
+      required: true
+  
+  - type: textarea
+    attributes:
+      label: How
+      placeholder: Provide some technical details about how this work item will be completed
+    validations: 
+      required: true
+  
+  - type: textarea
+    attributes:
+      label: Definition of Done
+      placeholder: What will need to be accomplished in order that this work item be considered done
+    validations: 
+      required: true
+  
+  - type: dropdown
+    attributes:
+      label: Story Points
+      options:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+      default: 1
+    validations: 
+      required: true
